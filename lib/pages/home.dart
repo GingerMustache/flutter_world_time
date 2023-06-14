@@ -12,28 +12,40 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // получаем аргументы в виду Map data из loading.dart
+    // получаем аргументы в виде Map data из loading.dart
     data = ModalRoute.of(context)!.settings.arguments as Map;
-    print(data);
+    // print(data);
 
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          TextButton.icon(
-            onPressed: () {
-              Navigator.pushNamed(context, '/location');
-            },
-            icon: const Icon(Icons.edit_location),
-            label: const Text("Edit location"),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          Row(
-            children: [Text(data["location"])],
-          ),
-        ],
+          child: Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 120, 0.0, 0.0),
+        child: Column(
+          children: [
+            TextButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/location');
+              },
+              icon: const Icon(Icons.edit_location),
+              label: const Text("Edit location"),
+            ),
+            const SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  data["location"],
+                  style: const TextStyle(fontSize: 28.0, letterSpacing: 2.0),
+                )
+              ],
+            ),
+            const SizedBox(height: 20.0),
+            Text(
+              data["time"],
+              style: const TextStyle(fontSize: 66.0),
+            ),
+          ],
+        ),
       )),
     );
   }
