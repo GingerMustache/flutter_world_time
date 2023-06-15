@@ -21,8 +21,9 @@ class _HomeState extends State<Home> {
       data = ModalRoute.of(context)?.settings.arguments as Map;
     }
 
-    // set a background
+    // set a background image
     String bgImage = data["isDayTime"] ? "day.jpg" : "night.jpg";
+    // set a background color
     Color? bgColor = data["isDayTime"]
         ? const Color.fromARGB(255, 36, 129, 144)
         : const Color.fromARGB(255, 35, 118, 121);

@@ -28,6 +28,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
     await instance.getTime();
 
     // navigate to home screen
+    // звкрываем страницу и передаем данные
     Navigator.pop(context, {
       "location": instance.location,
       "flag": instance.flag,
