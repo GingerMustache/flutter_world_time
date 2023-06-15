@@ -13,14 +13,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // получаем аргументы в виде Map data из loading.dart
-    data = ModalRoute.of(context)!.settings.arguments as Map;
-    print(data);
+    // data = data.isNotEmpty
+    //     ? data
+    //     : ModalRoute.of(context)!.settings.arguments as Map;
+    bool isMapEmpty = data!.isEmpty;
+    if (isMapEmpty) {
+      data = ModalRoute.of(context)?.settings.arguments as Map;
+    }
 
     // set a background
     String bgImage = data["isDayTime"] ? "day.jpg" : "night.jpg";
     Color? bgColor = data["isDayTime"]
-        ? Color.fromARGB(255, 36, 129, 144)
-        : Color.fromARGB(255, 35, 118, 121);
+        ? const Color.fromARGB(255, 36, 129, 144)
+        : const Color.fromARGB(255, 35, 118, 121);
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -37,17 +42,22 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               TextButton.icon(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/location');
+                onPressed: () async {
+                  dynamic result =
+                      await Navigator.pushNamed(context, '/location');
+                  setState(() {
+                    if (result != null) {
+                      data = result;
+                    }
+                  });
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.edit_location,
-                  color: const Color.fromARGB(255, 177, 125, 42),
+                  color: Color.fromARGB(255, 177, 125, 42),
                 ),
                 label: const Text(
                   "Edit location",
-                  style:
-                      TextStyle(color: const Color.fromARGB(255, 177, 125, 42)),
+                  style: TextStyle(color: Color.fromARGB(255, 177, 125, 42)),
                 ),
               ),
               const SizedBox(height: 8.0),

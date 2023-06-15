@@ -4,6 +4,8 @@ import 'package:flutter_world_time/pages/home.dart';
 import 'package:flutter_world_time/pages/loading.dart';
 
 void main() {
+  // routes используется для навигации
+  // initialRoute - экран старта
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {

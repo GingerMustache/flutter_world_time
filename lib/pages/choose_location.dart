@@ -8,6 +8,7 @@ class ChooseLocation extends StatefulWidget {
   State<ChooseLocation> createState() => _ChooseLocationState();
 }
 
+//  лист хардкода стран, локаций, флагов
 class _ChooseLocationState extends State<ChooseLocation> {
   List<WorldTime> locations = [
     WorldTime(url: 'Europe/London', location: 'London', flag: 'uk.jpg'),
@@ -20,14 +21,28 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'indonesia.jpg'),
   ];
 
+  // асинхронная функция,
+  // instance получает по индексу из листа выше время от api в world_time.dart
+  void updateTime(context, index) async {
+    WorldTime instance = locations[index];
+    await instance.getTime();
+
+    // navigate to home screen
+    Navigator.pop(context, {
+      "location": instance.location,
+      "flag": instance.flag,
+      "time": instance.time,
+      "isDayTime": instance.isDayTime
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("build function run");
     return Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
-          title: const Text("choose a location"),
+          title: const Text("Choose a location"),
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -42,7 +57,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
               return Card(
                 child: ListTile(
                   onTap: () {
-                    print(locations[index].location);
+                    updateTime(context, index);
                   },
                   title: Text(locations[index].location),
                   leading: CircleAvatar(
