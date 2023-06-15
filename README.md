@@ -1,17 +1,32 @@
 # flutter_world_time
 
-A new Flutter project.
+Первый проект по flutter.
 
-## Getting Started
+Есть выбор из нескольких стран с городами на которые можно тапнуть и получить местное время, с динамически сменяемыми обоями дня и ночи
 
-This project is a starting point for a Flutter application.
+С чем работал:
 
-A few resources to get you started if this is your first Flutter project:
+- api http://worldtimeapi.org
+Получение данных и обработка в человеческий вид.
+lib/service/world_time
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- использование простой навигации между страницами (именные Routes)
+с передачей данных через страницы.
+lib/main, lib/home/ lib/loading
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flutter_world_time
+- Динамическая смена обоев и цвета AppBar при смене дня и ночи,красил кнопки.
+lib/main
+
+- Добавление красивых и не очень картинок через
+   image: DecorationImage(
+            image: AssetImage("images/$bgImage"),
+            fit: BoxFit.cover,)
+lib/home/
+
+- подгрузка данных от api с проигрыванием экрана загрузки через
+    body: const Center(
+            child: SpinKitRotatingCircle(
+            color: Colors.white,
+            size: 50.0,)
+          )
+lib/loading
