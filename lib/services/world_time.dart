@@ -26,7 +26,7 @@ class WorldTime {
       DateTime now = DateTime.parse(dateTime);
       now = now.add(Duration(hours: int.parse(offset)));
 
-      isDayTime = now.hour > 6 && now.hour < 20.0;
+      isDayTime = now.hour > 6 && now.hour < 9.0;
 
       // set the time property
       // time = now.toString();

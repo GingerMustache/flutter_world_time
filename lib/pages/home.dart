@@ -18,8 +18,12 @@ class _HomeState extends State<Home> {
 
     // set a background
     String bgImage = data["isDayTime"] ? "day.jpg" : "night.jpg";
+    Color? bgColor = data["isDayTime"]
+        ? Color.fromARGB(255, 36, 129, 144)
+        : Color.fromARGB(255, 35, 118, 121);
 
     return Scaffold(
+      backgroundColor: bgColor,
       body: SafeArea(
           child: Container(
         decoration: BoxDecoration(
@@ -29,18 +33,21 @@ class _HomeState extends State<Home> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 345, 0.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(0.0, 445, 0.0, 0.0),
           child: Column(
             children: [
               TextButton.icon(
                 onPressed: () {
                   Navigator.pushNamed(context, '/location');
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.edit_location,
+                  color: const Color.fromARGB(255, 177, 125, 42),
                 ),
-                label: Text(
+                label: const Text(
                   "Edit location",
+                  style:
+                      TextStyle(color: const Color.fromARGB(255, 177, 125, 42)),
                 ),
               ),
               const SizedBox(height: 8.0),
@@ -49,17 +56,17 @@ class _HomeState extends State<Home> {
                 children: [
                   Text(
                     data["location"],
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 28.0,
                         letterSpacing: 2.0,
-                        color: Colors.white),
+                        color: Colors.grey[700]),
                   )
                 ],
               ),
-              const SizedBox(height: 15.0),
+              const SizedBox(height: 10.0),
               Text(
                 data["time"],
-                style: const TextStyle(fontSize: 50.0, color: Colors.white),
+                style: TextStyle(fontSize: 50.0, color: Colors.grey[700]),
               ),
             ],
           ),
