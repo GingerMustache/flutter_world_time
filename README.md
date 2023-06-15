@@ -31,4 +31,5 @@ lib/home/
           )
 lib/loading
 
-![app_view](https://github.com/GingerMustache/flutter_world_time/assets/103313278/1a5b3f17-8b5d-4d56-bf39-59ba81720d09)
+![app_gif](https://github.com/GingerMustache/flutter_world_time/assets/103313278/827d97a7-221a-4aba-9d85-b890e4b5699a)
+
