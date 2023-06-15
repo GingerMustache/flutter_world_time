@@ -30,3 +30,5 @@ lib/home/
             size: 50.0,)
           )
 lib/loading
+
+![app_view](https://github.com/GingerMustache/flutter_world_time/assets/103313278/1a5b3f17-8b5d-4d56-bf39-59ba81720d09)
